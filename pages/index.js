@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Head from "next/head";
 import Banner from '../components/Banner';
 import SmallCard from "../components/SmallCard";
-import MediumCard from '../components/MediumCard';
+
 
 
 export default function Home({ exploreData, cardsData}) {
@@ -38,13 +38,10 @@ export default function Home({ exploreData, cardsData}) {
      <section>
      <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
 
-     {cardsData?.map(({img, title}) => (
-       <MediumCard 
-       key={img} 
-       img={img} 
-       title={title} />
-     ))}
+    
      </section>
+
+
      </main>
      </div>
   );
