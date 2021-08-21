@@ -4,25 +4,38 @@ import { useState } from "react";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
+import { useRouter } from "next/dist/client/router";
 
-
-function Header() {
+function Header({placeholder}) {
     const [searchInput, setSearchInput] = useState("");
     const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setendDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     const [noOfGuests, setNoOfGuests] = useState(1);
+    const router = useRouter();
     const selectionRange = {
         startDate: startDate,
         endDate: endDate,
         key: 'selection'
     };
-   const handleSelect=(ranges) => {
+   const handleSelect = (ranges) => {
    setStartDate(ranges.selection.startDate);
-   setendDate(ranges.selection.endDate);
+   setEndDate(ranges.selection.endDate);
    };
   const resetInput = () => {
    setSearchInput("");  
   }
+
+  const search = () => {
+      router.push({
+          pathname:'/search',
+          query: {
+              location: searchInput,
+              startDate: startDate.toIsoString(),
+              endDate: endDate.toIsoString(),
+              noOfGuests,
+          },
+      });
+  };
 
   
 
@@ -30,7 +43,9 @@ function Header() {
         <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
 
            {/*LEFT*/}
-         <div className="relative flex items-center h-10 cursor-pointer my-auto">
+         <div 
+         onClick={() => router.push("/")} 
+         className="relative flex items-center h-10 cursor-pointer my-auto">
             <Image
             src="http://links.papareact.com/qd3" 
             layout="fill" 
@@ -45,10 +60,9 @@ function Header() {
             <input value= {searchInput} onChange={ (e) => setSearchInput(e.target.value)} 
             className=" flex-grow pl-5 bg-transparent outline:none test-sm text-size-gray-600"  
             type="text"
-            placeholder="Start your search" />
+            placeholder={placeholder || "Start your search"}/>
 
-            <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full 
-            p-2 cursor-pointer md:mx-2"/>
+            <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2"/>
             </div>
 
            {/*RIGHT*/}

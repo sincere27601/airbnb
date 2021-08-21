@@ -9,14 +9,19 @@ function Search() {
     noOfGuests} = router.query;
 
     console.log(router.query);
+    console.log("startDate in search file", startDate);
+    console.log("endDate in search file", endDate);
+
     
-
-    //ES6--
-
+    
     const formattedStartDate = format(new Date(), "dd MMMM yy");
     const formattedEndDate = format(new Date(), "dd MMMM yy");
 
     const range = `${formattedStartDate} - ${formattedEndDate}`;
+    
+    console.log(">>>> ", formattedStartDate);
+    console.log("startDate in search file-1", startDate);
+    console.log("endDate in search file-1", startDate);
 
     
 
