@@ -12,32 +12,29 @@ function Header({placeholder}) {
     const [endDate, setEndDate] = useState(new Date());
     const [noOfGuests, setNoOfGuests] = useState(1);
     const router = useRouter();
+  
+
     const selectionRange = {
         startDate: startDate,
         endDate: endDate,
-        key: 'selection'
+        key: 'selection',
     };
+
    const handleSelect = (ranges) => {
    setStartDate(ranges.selection.startDate);
    setEndDate(ranges.selection.endDate);
    };
-  const resetInput = () => {
-   setSearchInput("");  
-  }
 
-  const search = () => {
-      router.push({
-          pathname:'/search',
-          query: {
-              location: searchInput,
-              startDate: startDate.toIsoString(),
-              endDate: endDate.toIsoString(),
-              noOfGuests,
-          },
-      });
+  const resetInput = () => {
+   setSearchInput('');  
+
   };
 
-  
+  const search = () => {
+      router.push("search");
+  };    
+
+      
 
     return (
         <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
@@ -74,13 +71,13 @@ function Header({placeholder}) {
 
             <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
             <MenuIcon className="h-6" />
-            <userCircleIcon className="h-6"/>
+            <UserCircleIcon className="h-6"/>
             </div>
             </div>
             
             {searchInput && ( 
                 <div className= "flex flex-col col-span-3 mx-auto mt-auto">
-        <DateRangePicker 
+            <DateRangePicker 
                 ranges={[selectionRange]}
                 minDate={new Date()}
                 rangeColors={["FD5B61"]}
@@ -88,6 +85,7 @@ function Header({placeholder}) {
                 />
                 <div className="flex items-center border-b mb-4">
                 <h2 className="text-2xl flex-grow font-semibold">Number of Guests</h2>
+                
                 <userIcon className="h-5" />
                 <input 
                 value={noOfGuests}
