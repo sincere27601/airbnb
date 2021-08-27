@@ -27,7 +27,7 @@ function Footer() {
             <p>Trust and Safety</p>
             <p>Coders Camp</p>
             <p>Winners</p>
-            <p>Airbnb ninja</p>
+            <p>Airbnb Brothers</p>
         </div>
 
         </div>
