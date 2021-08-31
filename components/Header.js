@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { GlobeAltIcon, SearchIcon, MenuIcon, UserCircleIcon } from "@heroicons/react/solid";
+import { GlobeAltIcon, SearchIcon, MenuIcon, UserCircleIcon, UsersIcon} from "@heroicons/react/solid";
 import { useState } from "react";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -90,17 +90,17 @@ function Header({placeholder}) {
                 <div className="flex items-center border-b mb-4">
                 <h2 className="text-2xl flex-grow font-semibold">Number of Guests</h2>
                 
-                <userIcon className= "h-5" />
+                <UsersIcon className="h-5" />
                 <input 
                 value={noOfGuests}
-                onChange={e => setNoOfGuests(e.target.value)}
+                onChange={(e) => setNoOfGuests(e.target.value)}
                 type="number" 
                 min={1}
                 className="w-12 pl-2 text-lg outline-none text-red-400"
                 />
                 </div>
                 <div className="flex">
-                <button className="flex-grow text-gray-500">Cancel</button>
+                <button onClick={resetInput} className="flex-grow text-gray-500">Cancel</button>
                 <button className="flex-grow text-red-400">Search</button>
                 </div>
                 </div>
