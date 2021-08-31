@@ -15,27 +15,27 @@ function Header({placeholder}) {
     const [noOfGuests, setNoOfGuests] = useState(1);
     const router = useRouter();
 
-  
+    const handleSelect = (ranges) => {
+        setStartDate(ranges.selection.startDate);
+        setEndDate(ranges.selection.endDate);
+        };
 
-    const selectionRange = {
-        startDate: startDate,
-        endDate: endDate,
-        key: 'selection',
-    };
+        const resetInput = () => {
+            setSearchInput('');  
+         };
+           
+         const selectionRange = {
+            startDate: startDate,
+            endDate: endDate,
+            key: 'selection',
+        };
+    
+         const search = () => {
+         router.push("search");
+        }; 
 
-   const handleSelect = (ranges) => {
-   setStartDate(ranges.selection.startDate);
-   setEndDate(ranges.selection.endDate);
-   };
 
-  const resetInput = () => {
-   setSearchInput('');  
-
-  };
-
-  const search = () => {
-      router.push("search");
-  };    
+   
 
       
 
@@ -57,6 +57,7 @@ function Header({placeholder}) {
            {/*Middle*/}
             <div className="flex items-center md:border-2 
             rounded-full py-2 md:shadow-sm">
+
             <input value= {searchInput} onChange={ (e) => setSearchInput(e.target.value)} 
             className=" flex-grow pl-5 bg-transparent outline:none test-sm text-size-gray-600"  
             type="text"
@@ -89,7 +90,7 @@ function Header({placeholder}) {
                 <div className="flex items-center border-b mb-4">
                 <h2 className="text-2xl flex-grow font-semibold">Number of Guests</h2>
                 
-                <userIcon className="h-5" />
+                <userIcon className= "h-5" />
                 <input 
                 value={noOfGuests}
                 onChange={e => setNoOfGuests(e.target.value)}
