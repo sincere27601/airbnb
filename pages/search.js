@@ -3,7 +3,10 @@ import Footer from "../components/Footer";
 import { useRouter } from "next/dist/client/router";
 import { format } from "date-fns";
 
-function Search() {
+function Search({ searchResults }) {
+
+    console.log(searchResults);
+
     const router = useRouter();
     const { location, startDate, endDate, 
     noOfGuests} = router.query;
@@ -46,6 +49,10 @@ function Search() {
              <p className= "button">Type of Places</p>
     
              </div>
+             {searchResults.map(item => (
+                 
+             ))}
+
             </section>
             
             </main>
@@ -56,3 +63,14 @@ function Search() {
 }
 
 export default Search;
+
+export async function getServerSideProps() {
+    const searchResults = await fetch("http://links.papareact.com/isz").then( res => res.json());
+
+    return {
+        props: {
+            searchResults: searchResults,
+
+        }
+    }
+}
