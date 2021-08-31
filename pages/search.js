@@ -49,9 +49,25 @@ function Search({ searchResults }) {
              <p className= "button">Type of Places</p>
     
              </div>
-             {searchResults.map(item => (
-                 
-             ))}
+
+             <div classBame='flex flex-col'>
+             {searchResults.map(({ img, location, title, description, star, price, total }) => (
+                <InfoCard  
+                key={img}
+                img={img}
+                location={location}
+                title={title}
+                description={description}
+                star={star}
+                price={price}
+                total={total}
+                />
+                ))}
+
+             </div>
+             
+             
+          
 
             </section>
             
