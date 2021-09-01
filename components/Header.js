@@ -61,7 +61,7 @@ function Header({placeholder}) {
             <input value= {searchInput} onChange={(e) => setSearchInput(e.target.value)} 
             className=" flex-grow pl-5 bg-transparent outline:none test-sm text-size-gray-600"  
             type="text"
-            placeholder={placeholder || "Start your Vacation"}/>
+            placeholder={placeholder || "Start Your Vacation"}/>
 
             <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2"/>
             </div>
@@ -88,7 +88,7 @@ function Header({placeholder}) {
                 onChange={handleSelect}
                 />
                 <div className="flex items-center border-b mb-4">
-                <h2 className="text-2xl flex-grow font-semibold">Number of Guests</h2>
+                <h2 className="text-2xl flex-grow font-semibold">Number of Gargoyles</h2>
                 
                 <UsersIcon className="h-5" />
                 <input 
