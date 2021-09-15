@@ -72,7 +72,7 @@ function Search({ searchResults }) {
 
             </section>
 
-            <section className="">
+            <section className="min-w-[600px]">
             <Map />
             </section>
             
