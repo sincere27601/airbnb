@@ -71,6 +71,10 @@ function Search({ searchResults }) {
           
 
             </section>
+
+            <section className="">
+            <Map />
+            </section>
             
             </main>
 
